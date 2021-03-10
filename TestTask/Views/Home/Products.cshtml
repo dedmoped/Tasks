@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<TestTask.Models.Products>
+@{
+    ViewBag.Title = "Products";
+}
+
+<div><b>Products</b><br /></div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Name </th>
+        <th>Description </th>
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.name</td>
+            <td>@d.description</td>
+        </tr>
+
+    }
+</table>  

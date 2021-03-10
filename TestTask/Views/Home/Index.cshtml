@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    <h1>Массив</h1>
+    <h3>Обновляйте страницу</h3>
+    <span>Элементы массива : </span>
+    @foreach (var t in ViewBag.StartArray)
+    {<span>@t </span>}
+    <br />
+    <span>Сумма четных чисел массива : @ViewBag.Array</span>
+</div>
+<div class="container">
+    <h1>Строка</h1>
+        <input type="text" id="chars" placeholder="Введите строку" />
+        <input type="button" onclick="deleteChar()" value="Отправить"/>
+    <div id="data"></div>
+</div>
+
+<div class="container">
+    <h1> Cписок </h1>
+    <span>Элементы списка : </span>
+    @foreach (var t in ViewBag.StartList)
+    {<span>@t </span>}
+    <br />
+    <span> Четные элементы списка :  @foreach (var t in ViewBag.List) {<span> @t </span> }</span>
+</div>
+<script>
+function deleteChar() {
+        $.ajax({
+        url: 'http://localhost:56618/Home/DeleteChar',         
+            method: 'get',            
+            dataType: 'html',
+            data: { str: document.getElementById("chars").value},
+            success: function (data) {
+                document.getElementById("data").innerHTML = data;
+            }
+        });
+    }
+    </script>
